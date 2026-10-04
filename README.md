@@ -10,6 +10,8 @@ Homebrew casks for apps by [UnicornOps](https://github.com/unicornops).
 brew install --cask unicornops/tap/shuffleboard
 ```
 
+Installing by the full name trusts just this cask, as [Homebrew's tap trust](https://docs.brew.sh/Tap-Trust) requires; there's no separate `brew tap` or `brew trust` step.
+
 Shuffleboard updates itself (Sparkle) from version 0.16.0. Earlier versions are upgraded with `brew upgrade --cask shuffleboard`.
 
 ## How the cask stays current

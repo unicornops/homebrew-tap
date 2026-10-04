@@ -22,6 +22,8 @@ jobs:
           set -euo pipefail
           brew update --quiet
           brew tap unicornops/tap "$GITHUB_WORKSPACE"
+          # Homebrew 6 only loads trusted third-party items; trust just the cask under test.
+          brew trust --cask unicornops/tap/shuffleboard
 
       - name: brew style
         run: brew style unicornops/tap

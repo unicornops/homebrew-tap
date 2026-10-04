@@ -44,7 +44,7 @@ def render(version: str, sha256: str, auto_updates: bool) -> str:
     url :url
     strategy :github_latest
   end
-{auto}  depends_on macos: ">= :sonoma"
+{auto}  depends_on macos: :sonoma
 
   app "Shuffleboard.app"
 
