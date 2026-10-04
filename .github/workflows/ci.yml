@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cask:
+    name: Audit and install casks
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Tap this checkout
+        run: |
+          set -euo pipefail
+          brew update --quiet
+          brew tap unicornops/tap "$GITHUB_WORKSPACE"
+
+      - name: brew style
+        run: brew style unicornops/tap
+
+      - name: brew audit
+        run: brew audit --cask --strict --online unicornops/tap/shuffleboard
+
+      - name: Install and uninstall
+        run: |
+          set -euo pipefail
+          brew install --cask unicornops/tap/shuffleboard
+          test -d /Applications/Shuffleboard.app
+          codesign --verify --deep --strict /Applications/Shuffleboard.app
+          spctl --assess --type execute -vv /Applications/Shuffleboard.app
+          brew uninstall --cask unicornops/tap/shuffleboard
+          test ! -e /Applications/Shuffleboard.app
