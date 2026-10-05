@@ -1,6 +1,6 @@
 cask "shuffleboard" do
-  version "0.15.0"
-  sha256 "86c600bb3757b21b7310bb8a566d921d9fc82340073c5e93207edcaab6c90d41"
+  version "0.16.0"
+  sha256 "e3e633da1abd17220ff1514ce75155701ac5b5d5f5f92a8be8dc18bca5acc0b7"
 
   url "https://github.com/unicornops/shuffleboard/releases/download/v#{version}/Shuffleboard-#{version}.dmg"
   name "Shuffleboard"
@@ -12,6 +12,7 @@ cask "shuffleboard" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on macos: :sonoma
 
   app "Shuffleboard.app"
