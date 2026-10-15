@@ -1,6 +1,6 @@
 cask "shuffleboard" do
-  version "0.23.1"
-  sha256 "36e4ed93e883927094352cb91a48f40a2aef3a2566bda188fcf98c16c7fb1b47"
+  version "0.24.0"
+  sha256 "287f5a214c77594e5fc12d623bfd2e44f261b094d6c7fa7beca23bb78cea37db"
 
   url "https://github.com/unicornops/shuffleboard/releases/download/v#{version}/Shuffleboard-#{version}.dmg"
   name "Shuffleboard"
